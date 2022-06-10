@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighting Balls</title>
+    <link rel="stylesheet" href="css.css">
+
+    <script src="scripts/general/animate.js"></script>
+
+    <script src="scripts/general/shop.js"></script>
+
+    <script src="scripts/objects/bullet.js"></script>
+    <script src="scripts/objects/bullets.js"></script>
+
+    <script src="scripts/objects/enemy.js"></script>
+    <script src="scripts/objects/enemys.js"></script>
+
+    <script src="scripts/objects/player.js"></script>
+
+    <script src="scripts/objects/particle.js"></script>
+    <script src="scripts/objects/particles.js"></script>
+
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="scores">
+        <h1 id="bestScore">Best score:0</h1>
+        <h1 id="score">Score:0</h1>
+        <h1 id="lifes">lifes:0</h1>
+    </div>
+    <div id="shop">
+        <h1 id="money">Money:0</h1>
+        <button id="multiplier" onclick="Shop.Buy(this.id)">multiplier
+            <h1 class="cost">cost: 1</h1>
+            <h2 class="level">level: 0</h1>
+        </button>
+        <button id="gun" onclick="Shop.Buy(this.id)">machine gun
+            <h1 class="cost">cost: 1</h1>
+            <h2 class="level">level: 0</h1>
+        </button>
+        <button id="damage" onclick="Shop.Buy(this.id)">damage
+            <h1 class="cost">cost: 1</h1>
+            <h2 class="level">level: 0</h1>
+        </button>
+        <button id="speed" onclick="Shop.Buy(this.id)">bullet speed
+            <h1 class="cost">cost: 1</h1>
+            <h2 class="level">level: 0</h1>
+        </button>
+        <button id="penetration" onclick="Shop.Buy(this.id)">penetration
+            <h1 class="cost">cost: 1</h1>
+            <h2 class="level">level: 0</h1>
+        </button>
+        <button id="lifes" onclick="Shop.Buy(this.id)">lifes
+            <h1 class="cost">cost: 1</h1>
+            <h2 class="level">level: 0</h1>
+        </button>
+    </div>
+    <script src="scripts/general/main.js"></script>
+    <script src="scripts/general/events.js"></script>
+</body>
+
+</html>
