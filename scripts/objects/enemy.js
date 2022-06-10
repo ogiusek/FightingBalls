@@ -75,7 +75,6 @@ function Enemy(x = 0, y = 0, radius = 50, xVel = 1, yVel = 1, lifes = 1) {
             this.yPos < 0 - radius * 10 || this.yPos > canvas.height + radius * 10) {
             this.lifes = 0;
             Enemys.RemoveCheck();
-            console.log(this.xPos + 'xy' + this.yPos + 'yxv' + xVel + 'xvyv' + yVel);
         }
     }
     this.Draw = () => {

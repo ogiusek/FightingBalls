@@ -1,9 +1,15 @@
 const canvas = document.getElementById('canvas');
 const c = canvas.getContext('2d');
+const player = new Player(innerWidth / 2 * 4 / 5, innerHeight / 2, 50);
 canvas.width = window.innerWidth / 5 * 4;
 canvas.height = window.innerHeight;
+if (window.innerWidth < window.innerHeight) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight / 5 * 4;
+    player.xPos = innerWidth / 2;
+    player.yPos = innerHeight / 2 * 4 / 5;
+}
 
-const player = new Player(innerWidth / 2 * 4 / 5, innerHeight / 2, 50);
 
 let animate = true;
 

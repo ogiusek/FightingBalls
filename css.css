@@ -63,9 +63,6 @@ body {
     text-decoration: none;
 }
 
-
-/* .expensive {} */
-
 .cheap {
     background-color: green!important;
 }
@@ -76,4 +73,36 @@ body {
 
 .full {
     background-color: goldenrod!important;
+}
+
+@media all and (min-height: 100vw) {
+    #scores h1 {
+        font-size: 5vw;
+    }
+    #canvas {
+        width: 100vw;
+        height: 80vh;
+    }
+    #shop {
+        width: 100vw;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 80vh;
+        height: 20vh;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #shop button {
+        font-size: 2vw;
+        height: 15vw;
+        padding: 0px;
+    }
+    #shop button h1,
+    #shop button h2 {
+        font-size: 2vw;
+        text-decoration: none!important;
+    }
 }

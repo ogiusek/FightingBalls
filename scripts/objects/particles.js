@@ -3,7 +3,6 @@ class Particles {
     static Update() {
         for (let index = 0; index < this.particles.length; index++) {
             this.particles[index].Update();
-
         }
     }
     static RemoveCheck() {

@@ -1,5 +1,5 @@
 class Shop {
-    static money = 1000000;
+    static money = 3;
     static upgrades = {
         multiplier: 1,
         gun: 1,
@@ -69,7 +69,13 @@ function Item(cost, id, maxLevel, effect = 1) {
             this.level++;
             Shop.money -= this.cost;
             if (this.cost / 3 >= cost) {
-                this.cost += this.cost / 2;
+                // if (this.cost / 5 >= cost) {
+                // this.cost = Math.floor(this.cost.length - 1);
+                // } else {
+                this.cost += cost * 2;
+                // }
+
+                // this.cost += cost * Math.floor(this.cost / cost);
             } else {
                 this.cost += cost;
             }
