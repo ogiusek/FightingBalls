@@ -57,7 +57,7 @@ function Reset() {
     Enemys.Draw();
     upgrades = Object.fromEntries(Object.entries(Shop.upgrades));
     if (upgrades.gun >= 3) {
-        defaultMinigunDelay = 30 / (upgrades.gun - 2);
+        defaultMinigunDelay = 20 / (upgrades.gun - 2);
     }
 }
 

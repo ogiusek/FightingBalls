@@ -30,30 +30,33 @@ function Enemy(x = 0, y = 0, radius = 50, xVel = 1, yVel = 1, lifes = 1) {
                 this.yPos < (Bullets.bullets[index].yPos) + Bullets.bullets[index].radius + radius) {
                 let dist = Math.pow(this.xPos - Bullets.bullets[index].xPos, 2) + Math.pow(this.yPos - Bullets.bullets[index].yPos, 2);
                 if (Math.pow(Bullets.bullets[index].radius + radius, 2) > Math.floor(dist)) {
-                    let x = (upgrades.damage > this.lifes ? this.lifes : upgrades.damage);
-                    for (let index = 0; index < x; index++) {
-                        if (index != 0) {
-                            setTimeout(() => {
-                                Particles.AddParticles(this.xPos, this.yPos, this.color);
-                            }, index * 100);
-                        } else {
-                            Particles.AddParticles(this.xPos, this.yPos, this.color);
-                        }
-                    }
-                    this.lifes -= upgrades.damage;
-                    Bullets.bullets[index].lifes--;
-                    Bullets.RemoveCheck();
-                    scores.score += 15;
-                    if (this.lifes <= 0) {
-                        scores.score += 10;
-                        Shop.money += Math.ceil((Math.random() * 2 + 1) * lifes) * upgrades.multiplier;
-                        Shop.Write();
-                        Enemys.RemoveCheck();
-                    }
-                    radius = this.lifes * Enemys.liveRadius;
+                    this.FoundCollisionWithBullet(index);
                 }
             }
         }
+    }
+    this.FoundCollisionWithBullet = (index) => {
+        let x = (upgrades.damage > this.lifes ? this.lifes : upgrades.damage);
+        for (let index = 0; index < x; index++) {
+            if (index != 0) {
+                setTimeout(() => {
+                    Particles.AddParticles(this.xPos, this.yPos, this.color);
+                }, index * 100);
+            } else {
+                Particles.AddParticles(this.xPos, this.yPos, this.color);
+            }
+        }
+        this.lifes -= upgrades.damage;
+        Bullets.bullets[index].lifes--;
+        Bullets.RemoveCheck();
+        scores.score += 15;
+        if (this.lifes <= 0) {
+            scores.score += 10;
+            Shop.money += Math.ceil((Math.random() * 2 + 1) * lifes) * upgrades.multiplier;
+            Shop.Write();
+            Enemys.RemoveCheck();
+        }
+        radius = this.lifes * Enemys.liveRadius;
     }
     this.FindCollisionWithPlayer = () => {
         if (this.xPos > (player.xPos) - player.radius - radius &&

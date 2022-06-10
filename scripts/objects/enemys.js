@@ -17,7 +17,21 @@ class Enemys {
         }
         let x = 0;
         let y = Math.random() * window.innerHeight;
-        const lifes = Math.floor(Math.random() * 4) + 1;
+
+        x = Math.floor(Math.random() * (scores.score / Math.ceil(100 * Math.random() * 9))) + Math.ceil(Math.random() * 3);
+        if (x > 10) {
+            x = 10;
+        }
+        y = Math.ceil(scores.score / Math.ceil(1000)) + Math.floor(Math.random() * 2);
+        if (y > 10) {
+            y = 10;
+        } else if (y <= 0) {
+            y = 1;
+        }
+
+        const speed = y;
+        const lifes = x;
+
         const radius = lifes * this.liveRadius;
         const randomForRadius = Math.random() * 3 + 1;
         switch (Math.floor(Math.random() * 4)) {
@@ -40,7 +54,7 @@ class Enemys {
         }
         let xVel = player.xPos - x;
         let yVel = player.yPos - y;
-        while (xVel > 4 / lifes || yVel > 4 / lifes || xVel < -4 / lifes || yVel < -4 / lifes) {
+        while (xVel > speed / lifes || yVel > speed / lifes || xVel < -speed / lifes || yVel < -speed / lifes) {
             xVel = xVel / 10 * 9
             yVel = yVel / 10 * 9
         }
@@ -78,7 +92,7 @@ class Enemys {
     }
     static Reset() {
         this.enemys = [];
-        for (let index = 0; index < 15; index++) {
+        for (let index = 0; index < Math.random() * 7 + 8; index++) {
             this.AddEnemy();
         }
     }

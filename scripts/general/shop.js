@@ -1,5 +1,5 @@
 class Shop {
-    static money = 3;
+    static money = 100000;
     static upgrades = {
         multiplier: 1,
         gun: 1,
@@ -11,7 +11,7 @@ class Shop {
     static items = [
         new Item(300, 'multiplier', 5),
         new Item(1000, 'gun', 10),
-        new Item(500, 'damage', 20),
+        new Item(500, 'damage', 10),
         new Item(100, 'speed', 3, 3),
         new Item(500, 'penetration', 5),
         new Item(500, 'lifes', 10)
@@ -23,14 +23,21 @@ class Shop {
             const level = elements[index].getElementsByClassName("level")[0];
             for (let i = 0; i < this.items.length; i++) {
                 if (this.items[i].id == elements[index].id) {
-                    cost.innerHTML = 'cost: ' + this.items[i].cost;
+                    if (this.items[i].level < this.items[i].maxLevel) {
+                        cost.innerHTML = 'cost: ' + this.items[i].cost;
+                    } else {
+                        cost.innerHTML = 'cost: -';
+                    }
                     if (this.items[i].maxLevel <= this.items[i].level) {
                         elements[index].classList.remove("cheap");
                         elements[index].classList.add("full");
+                        elements[index].setAttribute("disabled", '');
                     } else if (this.money >= this.items[i].cost) {
                         elements[index].classList.add("cheap");
+                        elements[index].removeAttribute("disabled");
                     } else {
                         elements[index].classList.remove("cheap");
+                        elements[index].setAttribute("disabled", '');
                     }
                     level.innerHTML = 'level: ' + (this.items[i].level);
                     break;
@@ -46,6 +53,11 @@ class Shop {
                 }
             }
         }
+        Bullets.bulletInfo = {
+            bulletSpeed: this.upgrades.speed,
+            bulletLife: this.upgrades.penetration,
+            bulletDamage: this.upgrades.lifes
+        };
     };
     static UpdateScore() {
         scores.score += 0.05;
@@ -69,13 +81,11 @@ function Item(cost, id, maxLevel, effect = 1) {
             this.level++;
             Shop.money -= this.cost;
             if (this.cost / 3 >= cost) {
-                // if (this.cost / 5 >= cost) {
-                // this.cost = Math.floor(this.cost.length - 1);
-                // } else {
-                this.cost += cost * 2;
-                // }
-
-                // this.cost += cost * Math.floor(this.cost / cost);
+                if (this.cost / 5 >= cost) {
+                    this.cost += cost * 3;
+                } else {
+                    this.cost += cost * 2;
+                }
             } else {
                 this.cost += cost;
             }
