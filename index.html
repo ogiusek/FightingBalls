@@ -8,29 +8,33 @@
     <title>Fighting Balls</title>
     <link rel="stylesheet" href="css.css">
 
-    <script src="scripts/general/animate.js"></script>
+    <script src="materials/scripts/general/animate.js"></script>
 
-    <script src="scripts/general/shop.js"></script>
+    <script src="materials/scripts/general/shop.js"></script>
 
-    <script src="scripts/objects/bullet.js"></script>
-    <script src="scripts/objects/bullets.js"></script>
+    <script src="materials/scripts/objects/bullet.js"></script>
+    <script src="materials/scripts/objects/bullets.js"></script>
 
-    <script src="scripts/objects/enemy.js"></script>
-    <script src="scripts/objects/enemys.js"></script>
+    <script src="materials/scripts/objects/enemy.js"></script>
+    <script src="materials/scripts/objects/enemys.js"></script>
 
-    <script src="scripts/objects/player.js"></script>
+    <script src="materials/scripts/objects/player.js"></script>
 
-    <script src="scripts/objects/particle.js"></script>
-    <script src="scripts/objects/particles.js"></script>
+    <script src="materials/scripts/objects/particle.js"></script>
+    <script src="materials/scripts/objects/particles.js"></script>
 
 </head>
 
 <body>
-    <canvas id="canvas"></canvas>
-    <div id="scores">
+    <canvas id="canvas" onclick="Shot()"></canvas>
+    <div id="scores" onclick="Shot()">
         <h1 id="bestScore">Best score:0</h1>
         <h1 id="score">Score:0</h1>
         <h1 id="lifes">lifes:0</h1>
+    </div>
+    <div class="voice">
+        <img id="voiceIco" src="./materials/icons/volume.png"></img>
+        <input id="voice" type="range" min="0" max="100" oninput="ChangeVoice()" onclick="setTimeout(() => {animate = false;}, 1);">
     </div>
     <div id="shop">
         <h1 id="money">Money:0</h1>
@@ -59,8 +63,8 @@
             <h2 class="level">level: 0</h1>
         </button>
     </div>
-    <script src="scripts/general/main.js"></script>
-    <script src="scripts/general/events.js"></script>
+    <script src="materials/scripts/general/main.js"></script>
+    <script src="materials/scripts/general/events.js"></script>
 </body>
 
 </html>
